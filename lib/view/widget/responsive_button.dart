@@ -16,8 +16,8 @@ class ResponsiveButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        BlocProvider.of<TravelCubit>(context).getBreakingBadData();
-
+        //BlocProvider.of<TravelCubit>(context).getBreakingBadData();
+        BlocProvider.of<TravelCubit>(context).getCustomTravelData();
         // Navigator.push(
         //     context, MaterialPageRoute(builder: (context) => NavigationPage()));
       },

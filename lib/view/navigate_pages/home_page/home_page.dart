@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:travel_app/model/constant.dart';
+import 'package:travel_app/view%20model/cubit/travel_cubit.dart';
 import 'package:travel_app/view/widget/normal_text.dart';
 
 import '../../widget/bold_text.dart';
@@ -21,7 +23,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     BoldTextCustom(text: 'information'),
     BoldTextCustom(text: 'economy')
   ];
-  List<String> exploreButtons = ['Balloning','Hiking','Kayaking','Snorking'];
+  List<String> exploreButtons = ['Balloning', 'Hiking', 'Kayaking', 'Snorking'];
 
   @override
   Widget build(BuildContext context) {
@@ -29,54 +31,62 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.only(top: 30, left: 20, right: 20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const MenuProfileRow(),
-            BoldTextCustom(text: 'Discover'),
-            const SizedBox(height: 20),
-            TabBarCustom(tabController: _tabController),
-            TabBarViewCustom(tabController: _tabController),
-            const SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        child: BlocBuilder<TravelCubit, TravelState>(
+          builder: (context, state) {
+           if(state is LoadedState){
+            var data = state.customTravelresultData.data;
+            return   Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                BoldTextCustom(
-                  text: 'Explore more',
-                  size: 20,
+                const MenuProfileRow(),
+                BoldTextCustom(text: 'Discover'),
+                const SizedBox(height: 20),
+                TabBarCustom(tabController: _tabController),
+                TabBarViewCustom(tabController: _tabController),
+                const SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    BoldTextCustom(
+                      text: 'Explore more',
+                      size: 20,
+                    ),
+                    TextButton(
+                      onPressed: () {},
+                      child: NormalTextCustom(text: 'See all'),
+                    ),
+                  ],
                 ),
-                TextButton(
-                  onPressed: () {},
-                  child: NormalTextCustom(text: 'See all'),
+                const SizedBox(height: 10),
+                Container(
+                  height: 100,
+                  width: double.infinity,
+                  // color: Colors.green,
+                  child: ListView.builder(
+                      itemCount: 4,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return Container(
+                          margin: EdgeInsets.only(right: 30),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              ContainerImage(
+                                height: 65,
+                                width: 65,
+                                imageAsset: Constant.img_welcomePage1,
+                              ),
+                              Text(exploreButtons[index]),
+                            ],
+                          ),
+                        );
+                      }),
                 ),
               ],
-            ),
-            const SizedBox(height: 10),
-            Container(
-              height: 100,
-              width: double.infinity,
-             // color: Colors.green,
-              child: ListView.builder(
-                  itemCount: 4,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) {
-                    return Container(
-                      margin: EdgeInsets.only(right: 30),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          ContainerImage(
-                            height: 65,
-                            width: 65,
-                            imageAsset: Constant.img_welcomePage1,
-                          ),
-                          Text(exploreButtons[index]),
-                        ],
-                      ),
-                    );
-                  }),
-            ),
-          ],
+            );
+           }else{
+            return const Center(child: CircularProgressIndicator(),);
+           }},
         ),
       ),
     );

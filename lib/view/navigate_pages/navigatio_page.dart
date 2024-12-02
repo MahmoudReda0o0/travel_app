@@ -36,7 +36,7 @@ class _NavigationPageState extends State<NavigationPage> {
         unselectedItemColor: Colors.grey.withOpacity(0.5),
         showSelectedLabels: true,
         showUnselectedLabels: false,
-        elevation: 5,
+        elevation: 0,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
           BottomNavigationBarItem(icon: Icon(Icons.bar_chart), label: "bar"),

@@ -7,13 +7,21 @@ sealed class TravelState extends Equatable {
   List<Object> get props => [];
 }
 
-final class TravelInitial extends TravelState {}
+final class InitialState extends TravelState {}
 
-final class TravelWelcome extends TravelState {}
+final class WelcomeState extends TravelState {}
 
-final class TravelLoading extends TravelState {}
+final class LoadingState extends TravelState {}
 
-final class TravelLoaded extends TravelState {
-   TravelLoaded(this.data);
-  BreakingBadresultData data;
+final class LoadedState extends TravelState {
+  LoadedState({
+    required this.customTravelresultData,
+  });
+  CustomTravelresultData customTravelresultData;
+
+  
 }
+
+final class ErrorState extends TravelState {}
+
+final class DetailState extends TravelState {}
