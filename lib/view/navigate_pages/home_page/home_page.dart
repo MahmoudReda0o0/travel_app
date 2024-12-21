@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 BoldTextCustom(text: 'Discover'),
                 const SizedBox(height: 20),
                 TabBarCustom(tabController: _tabController),
-                TabBarViewCustom(tabController: _tabController),
+                // TabBarViewCustom(tabController: _tabController),
                 const SizedBox(height: 20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
