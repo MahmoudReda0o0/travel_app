@@ -8,7 +8,7 @@ import '../../widget/bold_text.dart';
 import '../../widget/container_image.dart';
 import 'widget/menu_profile_row.dart';
 import 'widget/tab_bar.dart';
-import 'widget/tab_bar_view.dart';
+
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -34,7 +34,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         child: BlocBuilder<TravelCubit, TravelState>(
           builder: (context, state) {
            if(state is LoadedState){
-            var data = state.customTravelresultData.data;
+            //var data = state.customTravelresultData.data;
             return   Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

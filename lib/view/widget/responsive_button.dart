@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:travel_app/view%20model/cubit/travel_cubit.dart';
 
-import '../../model/constant.dart';
-import '../navigate_pages/navigatio_page.dart';
+
 
 class ResponsiveButton extends StatelessWidget {
   bool isResponsive;

@@ -1,10 +1,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:travel_app/model/breaking_bad/fetch_data.dart';
-import 'package:travel_app/model/fetch_data.dart';
+
 
 import '../../model/custom_travel_data/fetch_data.dart';
-import '../../model/travel_model.dart';
+
 
 part 'travel_state.dart';
 

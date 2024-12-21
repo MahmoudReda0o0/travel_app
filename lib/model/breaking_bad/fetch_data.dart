@@ -29,7 +29,7 @@ class BreakingFetchData {
       }
     } catch (e) {
       print('braking bad get catch error : $e');
-      return BreakingBadresultData(data: [], loadedData: false, message: 'breaking bad catch error: $e');;
+      return BreakingBadresultData(data: [], loadedData: false, message: 'breaking bad catch error: $e');
     }
   }
 }
